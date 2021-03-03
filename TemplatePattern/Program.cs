@@ -1,5 +1,8 @@
 ﻿using System;
 
+/// <summary>
+/// 模板模式
+/// </summary>
 namespace TemplatePattern
 {
     class Program
