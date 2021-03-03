@@ -68,15 +68,6 @@ namespace TemplatePattern
         {
             Console.WriteLine("放入蒜蓉");
         }
-
-        public void CookProcess()
-        {
-            //PourOil();
-            //HeatOil();
-            PourVegetable();
-            PourSauce();
-            //Fry();
-        }
     }
 
     /// <summary>
