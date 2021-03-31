@@ -1,24 +1,26 @@
 ﻿using System;
 
-/// <summary>
-/// 模板模式
-/// 定义：定义一个模板结构，将具体实现延迟到子类去实现
-/// 作用：在不改变模板结构的情况下，在子类中重新定义模板的内容
-/// 解决问题：
-/// 1、提高代码复用率（将相同的代码放到抽象的父类中，而将不同的实现放在不同的子类中）
-/// 2、实现了反向控制（通过一个父类调用其子类的操作，通过对子类的具体实现扩展不同的行为，实现了反转控制。同时符合“开闭原则” ！！！）
-/// </summary>
+/*
+ * 模板模式
+定义：定义一个模板结构，将具体实现延迟到子类去实现
+作用：在不改变模板结构的情况下，在子类中重新定义模板的内容
+解决问题：
+1、提高代码复用率（将相同的代码放到抽象的父类中，而将不同的实现放在不同的子类中）
+2、实现了反向控制（通过一个父类调用其子类的操作，通过对子类的具体实现扩展不同的行为，实现了反转控制。同时符合“开闭原则” ！！！）
+ */
 namespace TemplatePattern
 {
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
-            var baocai = new FryBaoCai();
-            baocai.CookProcess();
-
-            var caixin = new FryCaiXin();
-            caixin.CookProcess();
+            Console.WriteLine("------干锅包菜------");
+            var baoCai = new FryBaoCai();
+            baoCai.CookProcess();
+            
+            Console.WriteLine("------蒜蓉菜心------");
+            var caiXin = new FryCaiXin();
+            caiXin.CookProcess();
 
             Console.ReadLine();
         }
@@ -32,7 +34,7 @@ namespace TemplatePattern
         /// <summary>
         /// 放入包菜
         /// </summary>
-        public override void PourVegetable()
+        protected override void PourVegetable()
         {
             Console.WriteLine("放入包菜");
         }
@@ -40,7 +42,7 @@ namespace TemplatePattern
         /// <summary>
         /// 放入调味料
         /// </summary>
-        public override void PourSauce()
+        protected override void PourSauce()
         {
             Console.WriteLine("放入辣椒");
         }
@@ -56,7 +58,7 @@ namespace TemplatePattern
         /// <summary>
         /// 放入包菜
         /// </summary>
-        public override void PourVegetable()
+        protected override void PourVegetable()
         {
             Console.WriteLine("放入菜心");
         }
@@ -64,7 +66,7 @@ namespace TemplatePattern
         /// <summary>
         /// 放入调味料
         /// </summary>
-        public override void PourSauce()
+        protected override void PourSauce()
         {
             Console.WriteLine("放入蒜蓉");
         }
@@ -88,7 +90,7 @@ namespace TemplatePattern
         /// <summary>
         /// 倒油是一样的，直接实现
         /// </summary>
-        private void PourOil()
+        private static void PourOil()
         {
             Console.WriteLine("倒油");
         }
@@ -96,7 +98,7 @@ namespace TemplatePattern
         /// <summary>
         /// 热油是一样的，直接实现
         /// </summary>
-        private void HeatOil()
+        private static void HeatOil()
         {
             Console.WriteLine("热油");
         }
@@ -104,17 +106,17 @@ namespace TemplatePattern
         /// <summary>
         /// 蔬菜不一样，所以声明为抽象方法，由子类去实现
         /// </summary>
-        public abstract void PourVegetable();
+        protected abstract void PourVegetable();
 
         /// <summary>
         /// 调味料不一样，所以声明为抽象方法，由子类去实现
         /// </summary>
-        public abstract void PourSauce();
+        protected abstract void PourSauce();
 
         /// <summary>
         /// 翻炒是一样的，直接实现
         /// </summary>
-        private void Fry()
+        private static void Fry()
         {
             Console.WriteLine("翻炒");
         }
